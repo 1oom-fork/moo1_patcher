@@ -1,0 +1,28 @@
+#include <stdint.h>
+#include <stdio.h>
+
+#include "patcher.h"
+
+int main(int argc, char **argv)
+{
+    const uint8_t match0[] = {
+        0x55, 0x8b, 0xec, 0x83, 0xec, 0x02, 0x56, 0x57, 0x8b, 0x76,
+        0x06, 0x8b, 0x7e, 0x08, 0x8b, 0xc7, 0xf7, 0x6e, 0x0a
+    };
+    const uint8_t replace0[] = {
+        0xcb, 0x8b, 0xec, 0x83, 0xec, 0x02, 0x56, 0x57, 0x8b, 0x76,
+        0x06, 0x8b, 0x7e, 0x08, 0x8b, 0xc7, 0xf7, 0x6e, 0x0a
+    };
+    int len0 = 19;
+    int off0 = 0xae49;
+    const patch_t patch_set[] = {
+        {match0, replace0, off0, len0},
+        {NULL, NULL, 0, 0},
+    };
+    patch_status_t result = execute_patcher("STARMAP.EXE", patch_set);
+    if (result == PATCH_STATUS_INVALID) {
+        printf("Fail\n");
+    }
+    getchar();
+    return 0;
+}
