@@ -6,13 +6,13 @@
 int main(int argc, char **argv)
 {
     const uint8_t match0[] = {
-        0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xfa,
+        0x01,
     };
     const uint8_t replace0[] = {
-        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xfa,
+        0x00,
     };
-    int len0 = 10;
-    int off0 = 0x3bc20;
+    int len0 = 1;
+    int off0 = 0x3bc22;
     const patch_t patch_set[] = {
         {match0, replace0, off0, len0},
         {NULL, NULL, 0, 0},
