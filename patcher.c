@@ -26,3 +26,20 @@ patch_status_t execute_patcher(const char *filename, const patch_t *patch_set)
     }
     return result;
 }
+
+
+patch_status_t disable_func(const char *filename, int offset)
+{
+    const uint8_t match[] = {
+        0x55, 0x8b, 0xec
+    };
+    const uint8_t replace[] = {
+        0xcb, 0x8b, 0xec
+    };
+    int len = 3;
+    const patch_t patch_set[] = {
+        {match, replace, offset, len},
+        {NULL, NULL, 0, 0},
+    };
+    patch_status_t result = execute_patcher(filename, patch_set);
+}
