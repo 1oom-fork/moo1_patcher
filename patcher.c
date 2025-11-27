@@ -28,7 +28,7 @@ patch_status_t execute_patcher(const char *filename, const patch_t *patch_set)
 }
 
 
-patch_status_t disable_func(const char *filename, int offset)
+patch_status_t disable_far_func(const char *filename, int offset)
 {
     const uint8_t match[] = {
         0x55, 0x8b, 0xec
