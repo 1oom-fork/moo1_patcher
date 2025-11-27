@@ -41,5 +41,5 @@ patch_status_t disable_func(const char *filename, int offset)
         {match, replace, offset, len},
         {NULL, NULL, 0, 0},
     };
-    patch_status_t result = execute_patcher(filename, patch_set);
+    return execute_patcher(filename, patch_set);
 }
